@@ -288,10 +288,11 @@ function showPopup() {
   popupMessage.textContent = message;
   popup.style.display = 'block';
 
-confirmButton.onclick = () => {
-  const encoded = encodeURIComponent(popupMessage.textContent);
-  window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-};
+  confirmButton.onclick = () => {
+    const encoded = encodeURIComponent(message);
+    window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+  };
+}
 
 function closePopup() {
   popup.style.display = 'none';
