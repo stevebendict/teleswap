@@ -311,11 +311,12 @@ usernameInput.addEventListener('input', () => {
   if (!username || isNaN(qty) || qty <= 0) return;
 
   const total = qty * starPrice;
-  const message = `Username: ${username}\\nJumlah Stars: ${qty}\\nEstimasi Harga: Rp${total.toLocaleString('id-ID')}`;
+  const message = `🚀 Order Telegram Stars\n👤 Username: ${username}\n⭐ Jumlah: ${qty}\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
   const encoded = encodeURIComponent(message);
   const orderBtn = document.getElementById("orderButton");
   if (orderBtn) {
-    orderBtn.href = `https://t.me/annadelveyy?start=${encoded}`;
+    orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+
   }
 }
 
