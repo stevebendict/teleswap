@@ -194,7 +194,7 @@
     <div id="packageList"></div>
     <div class="toggle-packages" onclick="togglePackageView()" id="toggleBtn">Tampilkan lebih banyak paket ⬇️</div>
 
-    <button class="buy-button" id="buyButton">Beli 0 Telegram Stars</button>
+    <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -294,10 +294,31 @@
       }
     }
 
-    starQtyInput.addEventListener('input', updatePrice);
-    usernameInput.addEventListener('input', updateUsernamePreview);
+   starQtyInput.addEventListener('input', () => {
+  updatePrice();
+  updateOrderLink();
+});
+usernameInput.addEventListener('input', () => {
+  updateUsernamePreview();
+  updateOrderLink();
+});
+
 
     manualRateDisplay.textContent = starPrice;
+    function updateOrderLink() {
+  const username = usernameInput.value.trim();
+  const qty = parseInt(starQtyInput.value);
+  if (!username || isNaN(qty) || qty <= 0) return;
+
+  const total = qty * starPrice;
+  const message = `Username: ${username}\\nJumlah Stars: ${qty}\\nEstimasi Harga: Rp${total.toLocaleString('id-ID')}`;
+  const encoded = encodeURIComponent(message);
+  const orderBtn = document.getElementById("orderButton");
+  if (orderBtn) {
+    orderBtn.href = `https://t.me/annadelveyy?start=${encoded}`;
+  }
+}
+
     updatePrice();
     renderPackages();
   </script>
