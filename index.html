@@ -277,18 +277,21 @@
   }
 
   // ✅ Smart suggestion fix
-  const suggestionBox = document.getElementById("suggestion");
-  if (!isNaN(qty) && qty > 0) {
-    const allPackages = [...basePackages, ...extendedPackages].sort((a, b) => a - b);
-    const betterDeal = allPackages.find(p => p > qty && p <= qty * 1.5);
-    if (betterDeal) {
-      suggestionBox.textContent = `💡 Pertimbangkan beli ${betterDeal.toLocaleString('id-ID')} Stars untuk nilai lebih baik.`;
-    } else {
-      suggestionBox.textContent = '';
-    }
-  } else {
-    suggestionBox.textContent = '';
+ const suggestionBox = document.getElementById("suggestion");
+
+// Always hide it first (in case quantity is invalid or cleared)
+suggestionBox.style.display = 'none';
+
+if (!isNaN(qty) && qty > 0) {
+  const allPackages = [...basePackages, ...extendedPackages].sort((a, b) => a - b);
+  const betterDeal = allPackages.find(p => p > qty && p <= qty * 1.5);
+
+  if (betterDeal) {
+    suggestionBox.textContent = `💡 Pertimbangkan beli ${betterDeal.toLocaleString('id-ID')} Stars untuk nilai lebih baik.`;
+    suggestionBox.style.display = 'block'; // ✅ only show it if a suggestion exists
   }
+}
+
 }
 
 
