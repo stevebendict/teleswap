@@ -258,7 +258,15 @@
 
       const name = document.createElement('div');
       name.className = 'package-name';
-      name.textContent = `⭐ ${amount.toLocaleString('id-ID')} Stars`;
+      name.innerHTML = `⭐ ${amount.toLocaleString('id-ID')} Stars`;
+
+if (amount === 10000) {
+  const badge = document.createElement("span");
+  badge.className = "best-deal-badge";
+  badge.textContent = "Best Deal";
+  name.appendChild(badge);
+}
+
 
       const price = document.createElement('div');
       price.className = 'star-summary';
