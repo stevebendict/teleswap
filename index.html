@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,8 @@
   <title>Beli Telegram Stars</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    html, body { height: 100%; }
     body {
       background-color: #0d111c;
       color: white;
@@ -26,16 +18,9 @@
       padding: 2rem;
       position: relative;
     }
-
     #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
     }
-
     .container {
       position: relative;
       z-index: 1;
@@ -47,18 +32,10 @@
       animation: fadeIn 0.5s ease-in-out;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
     }
-
-    label {
-      font-size: 0.9rem;
-      margin-bottom: 0.3rem;
-      display: block;
-    }
-
+    label { font-size: 0.9rem; margin-bottom: 0.3rem; display: block; }
     .input-icon-group {
-      position: relative;
-      margin-bottom: 0.5rem;
+      position: relative; margin-bottom: 0.5rem;
     }
-
     .input-icon-group input {
       width: 100%;
       padding: 0.75rem 1rem 0.75rem 2.5rem;
@@ -68,7 +45,6 @@
       color: white;
       font-size: 1rem;
     }
-
     .input-icon-group .telegram-icon {
       position: absolute;
       top: 50%;
@@ -77,91 +53,39 @@
       font-size: 1.2rem;
       color: #0088cc;
     }
-
     .username-warning {
-      font-size: 0.8rem;
-      color: #f5c518;
-      margin-top: 0.3rem;
+      font-size: 0.8rem; color: #f5c518; margin-top: 0.3rem;
     }
-
     .username-preview {
-      font-size: 0.85rem;
-      color: #66bfff;
-      margin: 0.5rem 0 1.5rem;
+      font-size: 0.85rem; color: #66bfff; margin: 0.5rem 0 1.5rem;
     }
-
     .username-preview a {
-      color: #66bfff;
-      text-decoration: none;
+      color: #66bfff; text-decoration: none;
     }
-
     .star-box {
-      background: #2c2f3f;
-      border-radius: 12px;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: #2c2f3f; border-radius: 12px; padding: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 1.5rem;
     }
-
     .star-box input {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      width: 100%;
+      background: transparent; border: none; color: white; font-size: 1.2rem; width: 100%;
     }
-
-    .star-summary {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .live-rate {
-      font-size: 0.85rem;
-      color: #7dd3fc;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
+    .star-summary { font-size: 0.9rem; color: #aaa; }
+    .live-rate { font-size: 0.85rem; color: #7dd3fc; text-align: center; margin-bottom: 1rem; }
     .package-option {
-      background: #2c2f3f;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      cursor: pointer;
+      background: #2c2f3f; border-radius: 8px; padding: 0.75rem 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.8rem; cursor: pointer;
     }
-
-    .package-name {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
+    .package-name { display: flex; align-items: center; gap: 0.5rem; }
     .buy-button {
-      width: 100%;
-      padding: 1rem;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 1rem;
+      width: 100%; padding: 1rem; border: none; background-color: #007bff;
+      color: white; font-size: 1rem; border-radius: 10px; cursor: pointer; margin-top: 1rem;
     }
-
     .toggle-packages {
-      text-align: center;
-      margin: 1rem 0;
-      color: #66bfff;
-      cursor: pointer;
-      font-size: 0.9rem;
+      text-align: center; margin: 1rem 0; color: #66bfff;
+      cursor: pointer; font-size: 0.9rem;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -173,7 +97,6 @@
   <div class="container">
     <h1>Beli Telegram Stars 💫</h1>
     <p class="subtext">Top up saldo Stars untuk diri sendiri atau teman & kolega.</p>
-
     <label for="username">Masukkan username Telegram</label>
     <div class="input-icon-group">
       <span class="telegram-icon">📨</span>
@@ -181,22 +104,17 @@
     </div>
     <div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
     <div class="username-preview" id="previewLink"></div>
-
     <label for="starQty">Jumlah Telegram Stars</label>
     <div class="star-box">
       <input type="number" id="starQty" placeholder="0">
       <div class="star-summary" id="pricePreview">Rp0</div>
     </div>
-
     <div class="live-rate" id="liveRate">💱 Harga manual: 1 Star = Rp <span id="manualRate">200</span></div>
-
     <p style="margin-bottom: 0.5rem; font-size: 0.9rem;">Atau pilih paket</p>
     <div id="packageList"></div>
     <div class="toggle-packages" onclick="togglePackageView()" id="toggleBtn">Tampilkan lebih banyak paket ⬇️</div>
-
     <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
@@ -225,7 +143,7 @@
     const packageList = document.getElementById('packageList');
     const toggleBtn = document.getElementById('toggleBtn');
 
-    let starPrice = 200; // Edit this daily as needed
+    let starPrice = 200;
     let expanded = false;
     const basePackages = [50, 500, 2500];
     const extendedPackages = [5000, 10000, 25000, 50000, 100000];
@@ -282,6 +200,7 @@
     function selectPackage(amount) {
       starQtyInput.value = amount;
       updatePrice();
+      updateOrderLink();
     }
 
     function updateUsernamePreview() {
@@ -294,32 +213,34 @@
       }
     }
 
-   starQtyInput.addEventListener('input', () => {
-  updatePrice();
-  updateOrderLink();
-});
-usernameInput.addEventListener('input', () => {
-  updateUsernamePreview();
-  updateOrderLink();
-});
+    function updateOrderLink() {
+      const username = usernameInput.value.trim();
+      const qty = parseInt(starQtyInput.value);
+      if (!username || isNaN(qty) || qty <= 0) return;
+      const total = qty * starPrice;
+      const message = `🚀 Order Telegram Stars
+👤 Username: ${username}
+⭐ Jumlah: ${qty}
+💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
+      const encoded = encodeURIComponent(message);
+      const orderBtn = document.getElementById("orderButton");
+      if (orderBtn) {
+        orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+      }
+    }
 
+    starQtyInput.addEventListener('input', () => {
+      updatePrice();
+      updateOrderLink();
+    });
+    usernameInput.addEventListener('input', () => {
+      updateUsernamePreview();
+      updateOrderLink();
+    });
+
+    document.getElementById("orderButton").addEventListener("click", updateOrderLink);
 
     manualRateDisplay.textContent = starPrice;
-   function updateOrderLink() {
-  const username = usernameInput.value.trim();
-  const qty = parseInt(starQtyInput.value);
-  if (!username || isNaN(qty) || qty <= 0) return;
-
-  const total = qty * starPrice;
-  const message = `🚀 Order Telegram Stars\n👤 Username: ${username}\n⭐ Jumlah: ${qty}\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
-  const encoded = encodeURIComponent(message);
-  const orderBtn = document.getElementById("orderButton");
-  if (orderBtn) {
-    orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
-  }
-}
-
-
     updatePrice();
     renderPackages();
   </script>
