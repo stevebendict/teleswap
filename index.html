@@ -277,6 +277,40 @@
     manualRateDisplay.textContent = starPrice;
     updatePrice();
     renderPackages();
+
+    const popup = document.getElementById("popup");
+const popupMessage = document.getElementById("popupMessage");
+const confirmButton = document.getElementById("confirmButton");
+
+function showPopup() {
+  const username = usernameInput.value.trim();
+  const qty = parseInt(starQtyInput.value);
+  if (!username || isNaN(qty) || qty <= 0) {
+    alert("⚠️ Harap isi username dan jumlah Stars yang valid.");
+    return;
+  }
+  const total = qty * starPrice;
+  const message = `🚀 Order Telegram Stars\n👤 Username: ${username}\n⭐ Jumlah: ${qty}\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
+  popupMessage.textContent = message;
+  popup.style.display = 'block';
+
+  confirmButton.onclick = () => {
+    navigator.clipboard.writeText(message)
+      .then(() => {
+        window.location.href = "https://t.me/annadelveyy";
+      })
+      .catch(() => {
+        alert("❌ Gagal menyalin pesan. Silakan salin manual.");
+        window.location.href = "https://t.me/annadelveyy";
+      });
+  };
+}
+
+function closePopup() {
+  popup.style.display = 'none';
+}
+
+    
   </script>
 </body>
 </html>
