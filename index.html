@@ -605,6 +605,20 @@ function closePopup() {
 
 }
 
+    function showToast(message = "✅ Pesanan dikirim ke admin!") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  toast.style.transform = "translateY(0)";
+  toast.style.pointerEvents = "auto";
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(20px)";
+    toast.style.pointerEvents = "none";
+  }, 3000);
+}
+
     
   </script>
 
