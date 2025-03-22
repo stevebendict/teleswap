@@ -298,9 +298,11 @@
       updateOrderLink();
     });
     usernameInput.addEventListener('input', () => {
-      updateUsernamePreview();
-      updateOrderLink();
-    });
+  usernameInput.classList.remove('input-error');
+  updateUsernamePreview();
+  updateOrderLink();
+});
+
 
     document.getElementById("orderButton").addEventListener("click", (e) => {
   e.preventDefault(); // ⛔ Prevent the default link behavior
