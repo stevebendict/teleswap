@@ -303,10 +303,12 @@
       updateOrderLink();
     });
     usernameInput.addEventListener('input', () => {
-  usernameInput.classList.remove('input-error');
+  usernameInput.classList.remove('input-error'); // ✅ keep this
   updateUsernamePreview();
   updateOrderLink();
+  document.getElementById("usernameLength").textContent = `${usernameInput.value.length}/32`; // ✅ new line for counter
 });
+
 
 
     document.getElementById("orderButton").addEventListener("click", (e) => {
