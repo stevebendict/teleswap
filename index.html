@@ -289,15 +289,16 @@ function showPopup() {
   popup.style.display = 'block';
 
   confirmButton.onclick = () => {
-    navigator.clipboard.writeText(message)
-      .then(() => {
-        window.location.href = "https://t.me/annadelveyy";
-      })
-      .catch(() => {
-        alert("❌ Gagal menyalin pesan. Silakan salin manual.");
-        window.location.href = "https://t.me/annadelveyy";
-      });
-  };
+  navigator.clipboard.writeText(popupMessage.textContent)
+    .then(() => {
+      alert("📋 Pesan berhasil disalin. Silakan tempel (paste) di chat dengan admin.");
+      window.location.href = "https://t.me/annadelveyy";
+    })
+    .catch(() => {
+      alert("❌ Gagal menyalin pesan. Silakan salin manual.");
+      window.location.href = "https://t.me/annadelveyy";
+    });
+};
 }
 
 function closePopup() {
