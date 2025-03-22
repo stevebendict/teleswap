@@ -404,9 +404,16 @@ function formatThousands(num) {
     }
 
     starQtyInput.addEventListener('input', () => {
-      updatePrice();
-      updateOrderLink();
-    });
+  let raw = starQtyInput.value.replace(/\D/g, ""); // Remove non-digits
+  if (raw.length > 0) {
+    starQtyInput.value = formatThousands(raw);
+  } else {
+    starQtyInput.value = "";
+  }
+  updatePrice();
+  updateOrderLink();
+});
+
     usernameInput.addEventListener('input', () => {
   usernameInput.classList.remove('input-error'); // ✅ keep this
   updateUsernamePreview();
