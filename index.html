@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beli Telegram Stars</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
     }
 
     body {
@@ -21,27 +25,55 @@
       align-items: center;
       padding: 2rem;
       position: relative;
-      z-index: 1;
     }
 
-    #bgVideo {
+    #particles-js {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0.2;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
 
     .container {
-      background-color: #1c1f2e;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(28, 31, 46, 0.95);
       border-radius: 16px;
       padding: 2rem;
       width: 100%;
       max-width: 480px;
       animation: fadeIn 0.5s ease-in-out;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: none;
+      background: #2c2f3f;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .summary {
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+
+    .buy-button {
+      background-color: #0088cc;
+      border: none;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
     }
 
     @keyframes fadeIn {
@@ -51,14 +83,54 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop playsinline id="bgVideo">
-    <source src="your-background.mp4" type="video/mp4">
-  </video>
-
+  <div id="particles-js"></div>
   <div class="container">
     <h1>Beli Telegram Stars 💫</h1>
-    <p class="subtext">Top up saldo Stars untuk diri sendiri atau teman & kolega.</p>
-    <!-- Your content continues here... -->
+    <p>Top up saldo Stars untuk diri sendiri atau teman & kolega.</p>
+
+    <label for="username">Telegram Username:</label>
+    <input type="text" id="username" placeholder="@username" />
+
+    <label for="quantity">Jumlah Stars:</label>
+    <input type="number" id="quantity" placeholder="Contoh: 1000" />
+
+    <div class="summary" id="pricePreview">Total: Rp0</div>
+
+    <button class="buy-button" onclick="calculatePrice()">Hitung Harga</button>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Setup particles
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#0088cc" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#0088cc", opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+        modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    // Manual pricing
+    const starPrice = 200; // Rp per star
+    function calculatePrice() {
+      const qty = parseInt(document.getElementById("quantity").value);
+      const preview = document.getElementById("pricePreview");
+      if (!isNaN(qty) && qty > 0) {
+        const total = qty * starPrice;
+        preview.innerText = `Total: Rp${total.toLocaleString('id-ID')}`;
+      } else {
+        preview.innerText = "Total: Rp0";
+      }
+    }
+  </script>
 </body>
 </html>
