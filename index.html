@@ -593,13 +593,29 @@ function showPopup() {
   popupMessage.textContent = message;
   popup.classList.add('show');
 
-  confirmButton.onclick = () => {
+ confirmButton.onclick = () => {
   const encoded = encodeURIComponent(message);
-  showToast(); // ✅ Trigger the toast
+
+  // ✅ Play confirmation sound
+  document.getElementById("confirmSound").play();
+
+  // ✅ Show toast
+  const toast = document.getElementById("toast");
+  toast.style.opacity = 1;
+  toast.style.transform = "translateY(0)";
+  toast.style.pointerEvents = "auto";
+
+  setTimeout(() => {
+    toast.style.opacity = 0;
+    toast.style.transform = "translateY(20px)";
+    toast.style.pointerEvents = "none";
+  }, 3000);
+
   setTimeout(() => {
     window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-  }, 800); // wait a bit before redirecting
+  }, 800);
 };
+
 
 }
 
