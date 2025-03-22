@@ -354,6 +354,9 @@ if (!isNaN(qty) && qty > 0) {
 }
 
 }
+function formatThousands(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
 
     function selectPackage(amount) {
