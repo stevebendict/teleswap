@@ -594,9 +594,13 @@ function showPopup() {
   popup.classList.add('show');
 
   confirmButton.onclick = () => {
-    const encoded = encodeURIComponent(message);
+  const encoded = encodeURIComponent(message);
+  showToast(); // ✅ Trigger the toast
+  setTimeout(() => {
     window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-  };
+  }, 800); // wait a bit before redirecting
+};
+
 }
 
 
