@@ -357,10 +357,22 @@ if (!isNaN(qty) && qty > 0) {
 
 
     function selectPackage(amount) {
-      starQtyInput.value = amount;
-      updatePrice();
-      updateOrderLink();
-    }
+  starQtyInput.value = amount;
+  updatePrice();
+  updateOrderLink();
+
+  // Remove previous selection
+  const allOptions = document.querySelectorAll('.package-option');
+  allOptions.forEach(opt => opt.classList.remove('selected'));
+
+  // Add selection to the clicked one
+  const selected = Array.from(allOptions).find(opt =>
+    opt.textContent.includes(`${amount.toLocaleString('id-ID')} Stars`)
+  );
+  if (selected) {
+    selected.classList.add('selected');
+  }
+}
 
     function updateUsernamePreview() {
       const username = usernameInput.value.trim();
