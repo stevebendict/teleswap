@@ -301,7 +301,7 @@
 
     function updateOrderLink() {
       const username = usernameInput.value.trim();
-      const qty = parseInt(starQtyInput.value);
+      const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
       if (!username || isNaN(qty) || qty <= 0) return;
       const total = qty * starPrice;
       const message = `🚀 Order Telegram Stars
