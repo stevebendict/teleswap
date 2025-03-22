@@ -458,11 +458,20 @@ function formatThousands(num) {
   updateOrderLink();
 });
 
-    usernameInput.addEventListener('input', () => {
-  usernameInput.classList.remove('input-error'); // ✅ keep this
-  updateUsernamePreview();
-  updateOrderLink();
-  document.getElementById("usernameLength").textContent = `${usernameInput.value.length}/32`; // ✅ new line for counter
+   usernameInput.addEventListener('input', () => {
+  const username = usernameInput.value.trim();
+
+  // ✅ Clear both visual states: red error & green success
+  usernameInput.classList.remove('input-error', 'input-success');
+
+  // ✅ If valid (starts with @ and longer than 3), show green glow
+  if (username.startsWith('@') && username.length > 3) {
+    usernameInput.classList.add('input-success');
+  }
+
+  updateUsernamePreview(); // 🔁 still keep
+  updateOrderLink();       // 🔁 still keep
+  document.getElementById("usernameLength").textContent = `${username.length}/32`; // 🔁 still keep
 });
 
 
