@@ -344,7 +344,8 @@ const confirmButton = document.getElementById("confirmButton");
 
 function showPopup() {
   const username = usernameInput.value.trim();
-  const qty = parseInt(starQtyInput.value);
+  const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
+
 
   // 🔁 Reset error state first
   usernameInput.classList.remove('input-error');
