@@ -264,7 +264,23 @@
         pricePreview.textContent = 'Rp0';
         buyButton.textContent = 'Beli 0 Telegram Stars';
       }
-    }
+   // Suggest nearest better value package
+const suggestionBox = document.getElementById("suggestion");
+const qty = parseInt(starQtyInput.value);
+
+if (!isNaN(qty) && qty > 0) {
+  const allPackages = [...basePackages, ...extendedPackages].sort((a, b) => a - b);
+  const betterDeal = allPackages.find(p => p > qty && p <= qty * 1.5);
+
+  if (betterDeal) {
+    suggestionBox.textContent = `💡 Pertimbangkan beli ${betterDeal.toLocaleString('id-ID')} Stars untuk nilai lebih baik.`;
+  } else {
+    suggestionBox.textContent = '';
+  }
+} else {
+  suggestionBox.textContent = '';
+}
+ }
 
     function selectPackage(amount) {
       starQtyInput.value = amount;
