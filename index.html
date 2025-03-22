@@ -322,6 +322,10 @@ if (amount === 10000) {
   if (!isNaN(qty) && qty > 0) {
     const total = qty * starPrice;
     pricePreview.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(total);
+pricePreview.classList.remove('price-pop');
+void pricePreview.offsetWidth;
+pricePreview.classList.add('price-pop');
+
     buyButton.textContent = `Beli ${qty.toLocaleString('id-ID')} Telegram Stars`;
   } else {
     pricePreview.textContent = 'Rp0';
