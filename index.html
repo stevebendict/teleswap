@@ -305,7 +305,7 @@ usernameInput.addEventListener('input', () => {
 
 
     manualRateDisplay.textContent = starPrice;
-    function updateOrderLink() {
+   function updateOrderLink() {
   const username = usernameInput.value.trim();
   const qty = parseInt(starQtyInput.value);
   if (!username || isNaN(qty) || qty <= 0) return;
@@ -315,10 +315,10 @@ usernameInput.addEventListener('input', () => {
   const encoded = encodeURIComponent(message);
   const orderBtn = document.getElementById("orderButton");
   if (orderBtn) {
-    orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=ENCODED_MESSAGE`;
-
+    orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
   }
 }
+
 
     updatePrice();
     renderPackages();
