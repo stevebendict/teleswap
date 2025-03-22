@@ -268,7 +268,11 @@
       updateOrderLink();
     });
 
-    document.getElementById("orderButton").addEventListener("click", updateOrderLink);
+    document.getElementById("orderButton").addEventListener("click", (e) => {
+  e.preventDefault(); // ⛔ Prevent the default link behavior
+  showPopup();        // ✅ Show confirmation popup
+});
+
 
     manualRateDisplay.textContent = starPrice;
     updatePrice();
