@@ -294,38 +294,29 @@
 }
 
 
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 0.4rem;
-}
-
-.footer-icons img {
-  width: 32px;
-  height: 32px;
-  opacity: 0.9;
+.floating-telegram {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+  background-color: rgba(56, 189, 248, 0.15);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   transition: all 0.3s ease;
-  filter: invert(1) brightness(1.2) drop-shadow(0 0 5px #38bdf8);
 }
 
-
-.footer-icons img:hover {
-  opacity: 1;
-  transform: scale(1.15);
-  filter: brightness(1.2) saturate(2) hue-rotate(180deg) drop-shadow(0 0 6px #38bdf8);
+.floating-telegram img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 4px #38bdf8);
 }
 
-
-footer.footer::before {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 100%;
-  max-width: 460px;
-  margin: 0 auto 1rem;
-  background: rgba(255, 255, 255, 0.06);
+.floating-telegram:hover {
+  transform: scale(1.1);
+  background-color: rgba(56, 189, 248, 0.25);
 }
+
 
     
   </style>
@@ -716,22 +707,13 @@ function closePopup() {
 
 <footer class="footer">
   <p>© 2022–2025 Beli Telegram Stars</p>
-  <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Gabung komunitas kami:</p>
-  <div class="footer-icons">
-    <a href="https://t.me/annadelveyy" target="_blank" aria-label="Telegram">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
-    </a>
-   <a href="https://x.com/yourhandle" target="_blank" aria-label="Twitter/X">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/X_logo_2023.svg/512px-X_logo_2023.svg.png" alt="X (Twitter)" />
-</a>
-
-
-
-    </a>
-  </div>
+ 
 </footer>
 
 
-  
+  <a href="https://t.me/annadelveyy" target="_blank" class="floating-telegram" aria-label="Telegram">
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+</a>
+
 </body>
 </html>
