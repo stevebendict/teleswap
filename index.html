@@ -296,22 +296,25 @@
 
 .footer-icons {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.4rem;
 }
 
 .footer-icons img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.85;
+  width: 26px;
+  height: 26px;
+  opacity: 0.9;
   transition: all 0.3s ease;
-  filter: grayscale(50%);
+  filter: brightness(1.1) saturate(1.4) hue-rotate(180deg); /* pushes toward blue */
 }
 
 .footer-icons img:hover {
   opacity: 1;
-  filter: grayscale(0%) drop-shadow(0 0 5px #38bdf8);
-  transform: scale(1.1);
+  transform: scale(1.15);
+  filter: brightness(1.2) saturate(2) hue-rotate(180deg) drop-shadow(0 0 6px #38bdf8);
 }
+
 
 footer.footer::before {
   content: '';
