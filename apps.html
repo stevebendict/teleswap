@@ -104,6 +104,58 @@
   color: #38bdf8;
 }
 
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.app-card {
+  background-color: #1e2536;
+  padding: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.app-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.app-card h3 {
+  color: #f8fafc;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.duration-select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #2c2f3f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.buy-button {
+  background-color: #38bdf8;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+  box-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
+
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -780,57 +832,11 @@
 <div id="particles-js"></div>
 <div class="container">
 
-<label for="username">Masukkan username Telegram</label>
-<div class="input-icon-group">
-
-<input id="username" placeholder="@username" type="text"/>
-<div id="usernameLength" style="font-size: 0.75rem; color: #aaa; margin-top: 0.2rem; text-align: right;">0/32</div>
-</div>
-<div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
-<div class="username-preview" id="previewLink"></div>
-<label for="premiumDuration">Pilih Durasi Langganan</label>
-
-<div class="package-option" onclick="selectPremium(3)">
-  <div class="option-left"><strong>3 Bulan</strong></div>
-  <div class="star-summary">Rp200.000</div>
-</div>
-
-<div class="package-option" onclick="selectPremium(6)">
-  <div class="option-left">
-    <strong>6 Bulan</strong>
-    <span class="badge">-30%</span>
-  </div>
-  <div class="option-right">Rp280.000</div>
-</div>
+<h1 class="main-page-title">Pilih Aplikasi Premium</h1>
+<div class="app-grid" id="appGrid"></div>
 
 
 
-<div class="package-option" onclick="selectPremium(12)">
-  <div class="option-left">
-    <strong>1 Tahun</strong>
-    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
-
-  </div>
-  <div class="option-right">Rp500.000</div>
-</div>
-
-
-
-<a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
-<!-- ✅ START OF POPUP INSERT -->
-<!-- 🆕 MODERN POPUP MODAL -->
-<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
-  <div class="popup-card" onclick="event.stopPropagation();">
-    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
-      Konfirmasi Pesanan
-    </h3>
-    <div id="popupMessage" class="order-summary-card"></div>
-
-    <div class="popup-actions">
-      <button onclick="closePopup()" class="popup-cancel">Batal</button>
-      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
-    </div>
-  </div>
 </div>
 
 <!-- ✅ END OF POPUP INSERT -->
