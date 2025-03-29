@@ -1084,6 +1084,64 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
    
 </script>
 
+<script>
+  const apps = [
+    { name: "Spotify", icon: "icons/spotify.png" },
+    { name: "YouTube Premium", icon: "icons/youtube.png" },
+    { name: "Netflix", icon: "icons/netflix.png" },
+    { name: "Disney+ Hotstar", icon: "icons/disney.png" },
+    { name: "HBO Go", icon: "icons/hbo.png" },
+    { name: "Amazon Prime Video", icon: "icons/amazon.png" },
+    { name: "Canva Pro", icon: "icons/canva.png" },
+    { name: "Grammarly Premium", icon: "icons/grammarly.png" },
+    { name: "Notion Pro", icon: "icons/notion.png" },
+    { name: "GitHub Copilot", icon: "icons/github.png" },
+    { name: "Surfshark VPN", icon: "icons/surfshark.png" },
+    { name: "NordVPN", icon: "icons/nordvpn.png" },
+    { name: "Adobe CC", icon: "icons/adobe.png" },
+    { name: "CapCut Pro", icon: "icons/capcut.png" },
+    { name: "Telegram Premium", icon: "icons/telegram.png" },
+    { name: "ChatGPT Plus", icon: "icons/chatgpt.png" },
+  ];
+
+  const durations = [
+    { label: "1 Bulan", value: "1 Bulan", stars: 500 },
+    { label: "3 Bulan", value: "3 Bulan", stars: 1300 },
+    { label: "1 Tahun", value: "1 Tahun", stars: 4800 }
+  ];
+
+  const appGrid = document.getElementById("appGrid");
+
+  apps.forEach(app => {
+    const card = document.createElement("div");
+    card.className = "app-card";
+    card.innerHTML = `
+      <img src="${app.icon}" alt="${app.name} Logo">
+      <h3>${app.name}</h3>
+      <select class="duration-select">
+        ${durations.map(d => `<option value="${d.value}" data-stars="${d.stars}">${d.label} - ${d.stars}⭐</option>`).join('')}
+      </select>
+      <button class="buy-button">Order Sekarang</button>
+    `;
+    const button = card.querySelector(".buy-button");
+    const select = card.querySelector(".duration-select");
+    button.onclick = () => {
+      const selected = select.options[select.selectedIndex];
+      const duration = selected.value;
+      const stars = selected.dataset.stars;
+      const message = [
+        "🛍️ Order Aplikasi Premium",
+        `📱 Aplikasi: ${app.name}`,
+        `🕐 Durasi: ${duration}`,
+        `💫 Harga: ${stars} Stars`
+      ].join('\\n');
+      const encoded = encodeURIComponent(message);
+      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+    };
+    appGrid.appendChild(card);
+  });
+</script>
    
+
 </body>
 </html>
