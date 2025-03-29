@@ -901,7 +901,10 @@
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
    
- document.getElementById("orderButton").addEventListener("click", generateMessage);
+ document.getElementById("orderButton").addEventListener("click", function (event) {
+  event.preventDefault(); // prevent the link from navigating
+  generateMessage();
+});
 
 
   </script>
