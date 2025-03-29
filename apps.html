@@ -755,6 +755,58 @@
   }
 }
 
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.app-card {
+  background-color: #1e2536;
+  padding: 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.app-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.app-card h3 {
+  color: #f8fafc;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.duration-select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #2c2f3f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.buy-button {
+  background-color: #38bdf8;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+  box-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
 
     
   </style>
