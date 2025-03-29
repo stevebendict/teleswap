@@ -905,34 +905,50 @@
   <!-- Order Confirmation Script -->
   <script>
     function generateMessage() {
-      const nama = document.getElementById("nama").value.trim();
-      const wa = document.getElementById("wa").value.trim();
-      const jenjang = document.getElementById("jenjang").value;
-      const deadline = document.getElementById("deadline").value;
-      const deskripsi = document.getElementById("deskripsi").value.trim();
-      const catatan = document.getElementById("catatan").value.trim();
-  
-      if (!nama || !wa || !jenjang || !deadline || !deskripsi) {
-        alert("⚠️ Harap lengkapi semua data yang wajib diisi.");
-        return;
-      }
-  
-      let msg = `🧾 Order Jasa Tugas\n`;
-      msg += `👤 Nama: ${nama}\n`;
-      msg += `📱 WhatsApp: ${wa}\n`;
-      msg += `🎓 Jenjang: ${jenjang}\n`;
-      msg += `⏳ Deadline: ${deadline}\n`;
-      msg += `📄 Deskripsi Tugas:\n${deskripsi}\n`;
-      if (catatan) msg += `📝 Catatan Tambahan:\n${catatan}`;
-  
-      const encoded = encodeURIComponent(msg);
-      document.getElementById("popupMessage").innerText = msg;
-      document.getElementById("popupOverlay").classList.add("show");
-  
-      document.getElementById("confirmButton").onclick = () => {
-       window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+  const nama = document.getElementById("nama").value.trim();
+  const wa = document.getElementById("wa").value.trim();
+  const jenjang = document.getElementById("jenjang").value;
+  const deadline = document.getElementById("deadline").value;
+  const deskripsi = document.getElementById("deskripsi").value.trim();
+  const catatan = document.getElementById("catatan").value.trim();
 
-    }
+  if (!nama || !wa || !jenjang || !deadline || !deskripsi) {
+    alert("⚠️ Harap lengkapi semua data yang wajib diisi.");
+    return;
+  }
+
+  const message = [
+    "🧾 Order Jasa Tugas",
+    `👤 Nama: ${nama}`,
+    `📱 WhatsApp: ${wa}`,
+    `🎓 Jenjang: ${jenjang}`,
+    `⏳ Deadline: ${deadline}`,
+    `📄 Deskripsi Tugas:\n${deskripsi}`,
+    catatan ? `📝 Catatan Tambahan:\n${catatan}` : ""
+  ].join('\n');
+
+  const encoded = encodeURIComponent(message);
+
+  // Set href so user can optionally click it directly
+  const orderButton = document.getElementById("orderButton");
+  orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+
+  // Show preview popup
+  document.getElementById("popupMessage").innerText = message;
+  document.getElementById("popupOverlay").classList.add("show");
+
+  // On confirm, play sound, show toast, then redirect to DM with message
+  const confirmButton = document.getElementById("confirmButton");
+  confirmButton.onclick = () => {
+    document.getElementById("confirmSound").play();
+    showToast();
+    setTimeout(() => {
+      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+    }, 1000);
+    setTimeout(() => document.getElementById("popupOverlay").classList.remove("show"), 3500);
+  };
+}
+
   
     function closePopup() {
       document.getElementById("popupOverlay").classList.remove("show");
