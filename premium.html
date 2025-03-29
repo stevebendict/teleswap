@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Beli Telegram Stars • Telebank</title>
+<title>Beli Telegram Premium • TeleBank</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -144,6 +144,19 @@
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 0.8rem; cursor: pointer;
     }
+   .badge {
+  background: #38bdf8;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: #22c55e;
+}
     .package-option:hover {
   background-color: #35394b;
   box-shadow: 0 0 6px rgba(0, 136, 204, 0.2);
@@ -151,13 +164,15 @@
   transition: all 0.2s ease;
 }
 
-    .package-name {
+   .package-name {
   display: flex;
   align-items: center;
-  gap: 0.6rem; /* was 0.5rem, slightly increased */
+  justify-content: space-between;
+  width: 100%;
   font-weight: 500;
   font-size: 0.95rem;
 }
+
 
    .buy-button {
   display: block;
@@ -340,12 +355,47 @@
   
 
   .package-option {
-    padding: 0.6rem 0.9rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 🧠 important fix */
+  background: #2c2f3f;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
 
-  .package-name {
-    font-size: 0.9rem;
-  }
+
+.option-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem; /* <- Add this */
+}
+
+
+.option-right {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+.badge {
+  background: #38bdf8;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
 
   #suggestion {
     font-size: 0.8rem;
@@ -716,7 +766,7 @@
   <nav class="floating-nav" id="floatingNav">
     <div class="nav-logo">TeleBank.</div>
     <div class="nav-scroll">
-      <a href="index.html" class="nav-pill active">Stars</a>
+      <a href="index.html" class="nav-pill">Stars</a>
       <a href="premium.html" class="nav-pill">Premium</a>
       <a href="apps.html" class="nav-pill">Apps</a>
       <a href="ghostwriting.html" class="nav-pill">Joki Tugas</a>
@@ -738,25 +788,34 @@
 </div>
 <div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
 <div class="username-preview" id="previewLink"></div>
-<label for="starQty">Jumlah Telegram Stars</label>
-<div class="star-box">
-<input id="starQty" inputmode="numeric" placeholder="0" type="text"/>
-<div class="star-summary" id="pricePreview">Rp0</div>
+<label for="premiumDuration">Pilih Durasi Langganan</label>
+
+<div class="package-option" onclick="selectPremium(3)">
+  <div class="option-left"><strong>3 Bulan</strong></div>
+  <div class="star-summary">Rp200.000</div>
 </div>
-<div id="suggestion" style="
-  background-color: #1e2536;
-  color: #7dd3fc;
-  font-size: 0.85rem;
-  padding: 0.75rem 1rem;
-  margin-top: 0.8rem;
-  border-left: 4px solid #38bdf8;
-  border-radius: 8px;
-  display: none;
-"></div>
-<div class="live-rate" id="liveRate">💱 Nilai Konversi: 1 Star = Rp <span id="manualRate">200</span></div>
-<p style="margin-bottom: 0.5rem; font-size: 0.9rem;">Atau pilih paket</p>
-<div id="packageList"></div>
-<div class="toggle-packages" id="toggleBtn" onclick="togglePackageView()">Tampilkan lebih banyak paket ⬇️</div>
+
+<div class="package-option" onclick="selectPremium(6)">
+  <div class="option-left">
+    <strong>6 Bulan</strong>
+    <span class="badge">-30%</span>
+  </div>
+  <div class="option-right">Rp280.000</div>
+</div>
+
+
+
+<div class="package-option" onclick="selectPremium(12)">
+  <div class="option-left">
+    <strong>1 Tahun</strong>
+    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
+
+  </div>
+  <div class="option-right">Rp500.000</div>
+</div>
+
+
+
 <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
 <!-- ✅ START OF POPUP INSERT -->
 <!-- 🆕 MODERN POPUP MODAL -->
@@ -780,280 +839,132 @@
    
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#0088cc" },
-        shape: { type: "circle" },
-        opacity: { value: 0.3 },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#0088cc", opacity: 0.3, width: 1 },
-        move: { enable: true, speed: 2 }
-      },
-      interactivity: {
-        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
-        modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
-    });
-
-    const starQtyInput = document.getElementById('starQty');
-    const pricePreview = document.getElementById('pricePreview');
-    const buyButton = document.getElementById('orderButton');
-    const usernameInput = document.getElementById('username');
-    const previewLink = document.getElementById('previewLink');
-    const manualRateDisplay = document.getElementById('manualRate');
-    const packageList = document.getElementById('packageList');
-    const toggleBtn = document.getElementById('toggleBtn');
-
-    let starPrice = 200;
-    let expanded = false;
-    const basePackages = [50, 500, 2500];
-    const extendedPackages = [5000, 10000, 25000, 50000, 100000];
-
-    function roundToLowerThousand(num) {
-      return Math.floor(num / 1000) * 1000;
-    }
-
-    function createPackageElement(amount) {
-      const div = document.createElement('div');
-      div.className = 'package-option';
-      div.onclick = () => selectPackage(amount);
-
-      const name = document.createElement('div');
-      name.className = 'package-name';
-      name.innerHTML = `⭐ ${amount.toLocaleString('id-ID')} Stars`;
-
-if (amount === 10000) {
-  const badge = document.createElement("span");
-  badge.className = "best-deal-badge";
-  badge.textContent = "Best Seller";
-  name.appendChild(badge);
-}
-
-
-      const price = document.createElement('div');
-      price.className = 'star-summary';
-      price.textContent = `Rp${roundToLowerThousand(amount * starPrice).toLocaleString('id-ID')}`;
-
-      div.appendChild(name);
-      div.appendChild(price);
-      return div;
-    }
-
-    function renderPackages() {
-      packageList.innerHTML = '';
-      const allPackages = expanded ? [...basePackages, ...extendedPackages] : basePackages;
-      allPackages.forEach(amount => {
-        const pkg = createPackageElement(amount);
-        packageList.appendChild(pkg);
-      });
-      toggleBtn.textContent = expanded ? 'Sembunyikan paket tambahan ⬆️' : 'Tampilkan lebih banyak paket ⬇️';
-    }
-
-    function togglePackageView() {
-      expanded = !expanded;
-      renderPackages();
-    }
-
-    function updatePrice() {
-  const qtyRaw = starQtyInput.value.replace(/\D/g, ''); // remove commas, non-numeric
-  const qty = parseInt(qtyRaw);
-
-  if (!isNaN(qty) && qty > 0) {
-    const total = qty * starPrice;
-    pricePreview.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(total);
-pricePreview.classList.remove('price-pop');
-void pricePreview.offsetWidth;
-pricePreview.classList.add('price-pop');
-
-    buyButton.textContent = `Beli ${qty.toLocaleString('id-ID')} Telegram Stars`;
-  } else {
-    pricePreview.textContent = 'Rp0';
-    buyButton.textContent = 'Beli 0 Telegram Stars';
-  }
-
-  // ✅ Smart suggestion fix
- const suggestionBox = document.getElementById("suggestion");
-
-// Always hide it first (in case quantity is invalid or cleared)
-suggestionBox.style.display = 'none';
-
-if (!isNaN(qty) && qty > 0) {
-  const allPackages = [...basePackages, ...extendedPackages].sort((a, b) => a - b);
-  const betterDeal = allPackages.find(p => p > qty && p <= qty * 1.5);
-
-  if (betterDeal) {
-    suggestionBox.textContent = `💡 Pertimbangkan beli ${betterDeal.toLocaleString('id-ID')} Stars untuk nilai lebih baik.`;
-    suggestionBox.style.display = 'block'; // ✅ only show it if a suggestion exists
-  }
-}
-
-}
-function formatThousands(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-
-    function selectPackage(amount) {
-  starQtyInput.value = amount;
-  updatePrice();
-  updateOrderLink();
-
-  // Remove previous selection
-  const allOptions = document.querySelectorAll('.package-option');
-  allOptions.forEach(opt => opt.classList.remove('selected'));
-
-  // Add selection to the clicked one
-  const selected = Array.from(allOptions).find(opt =>
-    opt.textContent.includes(`${amount.toLocaleString('id-ID')} Stars`)
-  );
-  if (selected) {
-    selected.classList.add('selected');
-  }
-}
-
-    function updateUsernamePreview() {
-      const username = usernameInput.value.trim();
-      if (username.startsWith('@') && username.length > 1) {
-        const cleanUsername = username.slice(1);
-        previewLink.innerHTML = `🔗 <a href="https://t.me/${cleanUsername}" target="_blank">https://t.me/${cleanUsername}</a>`;
-      } else {
-        previewLink.innerHTML = '';
-      }
-    }
-
-    function updateOrderLink() {
-      const username = usernameInput.value.trim();
-      const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
-      if (!username || isNaN(qty) || qty <= 0) return;
-      const total = qty * starPrice;
-      const message = `🚀 Order Telegram Stars
-👤 Username: ${username}
-⭐ Jumlah: ${qty}
-💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
-      const encoded = encodeURIComponent(message);
-      const orderBtn = document.getElementById("orderButton");
-      if (orderBtn) {
-        orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
-      }
-    }
-
-    starQtyInput.addEventListener('input', () => {
-  let raw = starQtyInput.value.replace(/\D/g, ""); // Remove non-digits
-  if (raw.length > 0) {
-    starQtyInput.value = formatThousands(raw);
-  } else {
-    starQtyInput.value = "";
-  }
-  updatePrice();
-  updateOrderLink();
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80, density: { enable: true, value_area: 800 } },
+    color: { value: "#0088cc" },
+    shape: { type: "circle" },
+    opacity: { value: 0.3 },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 150, color: "#0088cc", opacity: 0.3, width: 1 },
+    move: { enable: true, speed: 2 }
+  },
+  interactivity: {
+    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+    modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
 });
 
-   usernameInput.addEventListener('input', () => {
-  const username = usernameInput.value.trim();
-
-  // ✅ Clear both visual states: red error & green success
-  usernameInput.classList.remove('input-error', 'input-success');
-
-  // ✅ If valid (starts with @ and longer than 3), show green glow
-  if (username.startsWith('@') && username.length > 3) {
-    usernameInput.classList.add('input-success');
+// 🔤 Typing animation
+document.addEventListener("DOMContentLoaded", function () {
+  const title = "Beli Telegram Premium.";
+  const target = document.getElementById("typedTitle");
+  let i = 0;
+  function typeChar() {
+    if (i < title.length) {
+      target.textContent += title.charAt(i);
+      i++;
+      setTimeout(typeChar, 80);
+    }
   }
-
-  updateUsernamePreview(); // 🔁 still keep
-  updateOrderLink();       // 🔁 still keep
-  document.getElementById("usernameLength").textContent = `${username.length}/32`; // 🔁 still keep
+  typeChar();
 });
 
+const priceMap = {
+  3: 200000,
+  6: 280000,
+  12: 500000,
+};
+let selectedDuration = null;
 
-
-    document.getElementById("orderButton").addEventListener("click", (e) => {
-  e.preventDefault(); // ⛔ Prevent the default link behavior
-  showPopup();        // ✅ Show confirmation popup
-});
-
-
-    manualRateDisplay.textContent = starPrice;
-    updatePrice();
-    renderPackages();
-
-    const popup = document.getElementById("popup");
-const popupMessage = document.getElementById("popupMessage");
+const usernameInput = document.getElementById("username");
+const orderButton = document.getElementById("orderButton");
 const confirmButton = document.getElementById("confirmButton");
+const popupOverlay = document.getElementById("popupOverlay");
+const popupMessage = document.getElementById("popupMessage");
 
-function showPopup() {
+function selectPremium(months) {
+  selectedDuration = months;
+  document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
+  const option = document.querySelectorAll(".package-option")[{3:0,6:1,12:2}[months]];
+  option?.classList.add("selected");
+
   const username = usernameInput.value.trim();
-  const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
+  orderButton.textContent = `Beli Premium - ${months} Bulan`;
+  updatePreview(username);
+  updateLink(username, months);
+}
+
+function updatePreview(username) {
+  const preview = document.getElementById("previewLink");
+  if (username.startsWith('@') && username.length > 1) {
+    preview.innerHTML = `🔗 <a href="https://t.me/${username.slice(1)}" target="_blank">https://t.me/${username.slice(1)}</a>`;
+  } else {
+    preview.innerHTML = '';
+  }
+  document.getElementById("usernameLength").textContent = `${username.length}/32`;
+}
+
+function updateLink(username, duration) {
+  if (!username || !duration) return;
+  const total = priceMap[duration];
+const message = [
+  "🚀 Order Telegram Premium",
+  `👤 Username: ${username}`,
+  `🕐 Durasi: ${duration} Bulan`,
+  `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
+].join('\n'); // ← Real newlines!
+
+const encoded = encodeURIComponent(message);
 
 
-  // 🔁 Reset error state first
-  usernameInput.classList.remove('input-error');
+  orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
 
-  // ❌ Check if username is invalid
+  confirmButton.onclick = () => {
+    document.getElementById("confirmSound").play();
+    showToast();
+    setTimeout(() => {
+      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+    }, 1000);
+    setTimeout(() => popupOverlay.classList.remove("show"), 3500);
+  };
+}
+
+usernameInput.addEventListener("input", () => {
+  const username = usernameInput.value.trim();
+  usernameInput.classList.remove("input-error", "input-success");
+  if (username.startsWith("@") && username.length > 3) {
+    usernameInput.classList.add("input-success");
+  }
+  updatePreview(username);
+  updateLink(username, selectedDuration);
+});
+
+orderButton.addEventListener("click", e => {
+  e.preventDefault();
+  const username = usernameInput.value.trim();
+
   if (!username || !username.startsWith('@') || username.length < 4) {
-    usernameInput.classList.add('input-error');
+    usernameInput.classList.add("input-error");
     usernameInput.focus();
     return;
   }
-
-  // ❌ Check if quantity is invalid
-  if (isNaN(qty) || qty <= 0) {
-    alert("⚠️ Jumlah Stars harus lebih dari 0.");
+  if (!selectedDuration) {
+    alert("⚠️ Silakan pilih durasi langganan.");
     return;
   }
 
-  const total = qty * starPrice;
-  const message = `🚀 Order Telegram Stars\n👤 Username: ${username}\n⭐ Jumlah: ${qty}\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
-  document.getElementById("popupMessage").innerHTML = `
-  <div><strong>👤 Username:</strong> <span>${username}</span></div>
-  <div><strong>⭐ Jumlah:</strong> <span>${qty.toLocaleString('id-ID')}</span></div>
-  <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
-`;
+  const total = priceMap[selectedDuration];
+  popupMessage.innerHTML = `
+    <div><strong>👤 Username:</strong> <span>${username}</span></div>
+    <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
+    <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
+  `;
+  popupOverlay.classList.add("show");
+});
 
-  document.getElementById('popupOverlay').classList.add('show');
-
-
-confirmButton.onclick = () => {
-  const encoded = encodeURIComponent(message);
-
-  // ✅ Play confirmation sound
-  document.getElementById("confirmSound").play();
-
-  // ✅ Show toast
-  const toast = document.getElementById("toast");
-  toast.textContent = "✅ Pesanan dikirim ke admin!";
-  toast.style.opacity = 1;
-  toast.style.transform = "translateY(0)";
-  toast.style.pointerEvents = "auto";
-
-  // ✅ Immediately open Telegram (user-initiated action)
-  setTimeout(() => {
-    window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-  }, 1000);
-
-  // ✅ Auto-close popup and toast
-  setTimeout(() => {
-    document.getElementById("popupOverlay").classList.remove("show");
-
-    toast.style.opacity = 0;
-    toast.style.transform = "translateY(20px)";
-    toast.style.pointerEvents = "none";
-  }, 3500);
-};
-
-
-
-}
-
-
-function closePopup() {
-  document.getElementById('popupOverlay').classList.remove('show');
-
-
-}
-
-    function showToast(message = "✅ Pesanan dikirim ke admin!") {
+function showToast(message = "✅ Pesanan dikirim ke admin!") {
   const toast = document.getElementById("toast");
   toast.textContent = message;
   toast.style.opacity = "1";
@@ -1067,8 +978,11 @@ function closePopup() {
   }, 3000);
 }
 
-    
-  </script>
+function closePopup() {
+  popupOverlay.classList.remove("show");
+}
+</script>
+
 <div id="toast" style="
   position: fixed;
   bottom: 2rem;
@@ -1164,21 +1078,7 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const title = "Beli Telegram Stars.";
-  const target = document.getElementById("typedTitle");
-  let i = 0;
 
-  function typeChar() {
-    if (i < title.length) {
-      target.textContent += title.charAt(i);
-      i++;
-      setTimeout(typeChar, 80); // adjust speed here
-    }
-  }
-
-  typeChar();
-});
 
    
 </script>
