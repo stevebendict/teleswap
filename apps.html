@@ -778,60 +778,9 @@
 
    
 <div id="particles-js"></div>
-<div class="container">
+<h1 class="main-page-title">Pilih Aplikasi Premium</h1>
+<div class="app-grid" id="appGrid"></div>
 
-<label for="username">Masukkan username Telegram</label>
-<div class="input-icon-group">
-
-<input id="username" placeholder="@username" type="text"/>
-<div id="usernameLength" style="font-size: 0.75rem; color: #aaa; margin-top: 0.2rem; text-align: right;">0/32</div>
-</div>
-<div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
-<div class="username-preview" id="previewLink"></div>
-<label for="premiumDuration">Pilih Durasi Langganan</label>
-
-<div class="package-option" onclick="selectPremium(3)">
-  <div class="option-left"><strong>3 Bulan</strong></div>
-  <div class="star-summary">Rp200.000</div>
-</div>
-
-<div class="package-option" onclick="selectPremium(6)">
-  <div class="option-left">
-    <strong>6 Bulan</strong>
-    <span class="badge">-30%</span>
-  </div>
-  <div class="option-right">Rp280.000</div>
-</div>
-
-
-
-<div class="package-option" onclick="selectPremium(12)">
-  <div class="option-left">
-    <strong>1 Tahun</strong>
-    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
-
-  </div>
-  <div class="option-right">Rp500.000</div>
-</div>
-
-
-
-<a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
-<!-- ✅ START OF POPUP INSERT -->
-<!-- 🆕 MODERN POPUP MODAL -->
-<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
-  <div class="popup-card" onclick="event.stopPropagation();">
-    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
-      Konfirmasi Pesanan
-    </h3>
-    <div id="popupMessage" class="order-summary-card"></div>
-
-    <div class="popup-actions">
-      <button onclick="closePopup()" class="popup-cancel">Batal</button>
-      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
-    </div>
-  </div>
-</div>
 
 <!-- ✅ END OF POPUP INSERT -->
 
