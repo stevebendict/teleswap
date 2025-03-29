@@ -953,6 +953,20 @@
     function closePopup() {
       document.getElementById("popupOverlay").classList.remove("show");
     }
+
+function showToast() {
+  const toast = document.getElementById("toast");
+  toast.style.opacity = 1;
+  toast.style.pointerEvents = "auto";
+  toast.style.transform = "translateY(0)";
+  setTimeout(() => {
+    toast.style.opacity = 0;
+    toast.style.pointerEvents = "none";
+    toast.style.transform = "translateY(20px)";
+  }, 3000);
+}
+
+
   </script>
 </body>
 </html>
