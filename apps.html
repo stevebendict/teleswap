@@ -1016,35 +1016,39 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
   apps.forEach(app => {
     const card = document.createElement("div");
     card.className = "app-card";
+
+    const optionsHTML = durations.map(d => `<option value="${d.value}" data-stars="${d.stars}">${d.label} - ${d.stars}⭐</option>`).join('');
+
     card.innerHTML = `
       <img src="${app.icon}" alt="${app.name} Logo">
       <h3>${app.name}</h3>
-      <select class="duration-select">
-        ${durations.map(d => `<option value="${d.value}" data-stars="${d.stars}">${d.label} - ${d.stars}⭐</option>`).join('')}
-      </select>
+      <select class="duration-select">${optionsHTML}</select>
       <button class="buy-button">Order Sekarang</button>
     `;
 
     const button = card.querySelector(".buy-button");
     const select = card.querySelector(".duration-select");
 
-    button.onclick = () => {
-      const selected = select.options[select.selectedIndex];
-      const duration = selected.value;
-      const stars = selected.dataset.stars;
+    button.addEventListener("click", () => {
+      const selectedOption = select.options[select.selectedIndex];
+      const duration = selectedOption.value;
+      const stars = selectedOption.dataset.stars;
+
       const message = [
         "🛍️ Order Aplikasi Premium",
         `📱 Aplikasi: ${app.name}`,
         `🕐 Durasi: ${duration}`,
         `💫 Harga: ${stars} Stars`
-      ].join('\\n');
+      ].join('\n');
+
       const encoded = encodeURIComponent(message);
       window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-    };
+    });
 
     appGrid.appendChild(card);
   });
 </script>
+
 
 
    
