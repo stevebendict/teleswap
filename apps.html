@@ -992,21 +992,19 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
 
    
 </script>
-
 <script>
   const apps = [
-  { name: "Spotify", icon: "icons/spotify.png" },
-  { name: "YouTube Premium", icon: "icons/youtube.png" },
-  { name: "Netflix", icon: "icons/netflix.png" },
-  { name: "Disney+ Hotstar", icon: "icons/disney.png" },
-  { name: "HBO Go", icon: "icons/hbo.png" },
-  { name: "Amazon Prime Video", icon: "icons/amazon.png" },
-  { name: "Canva Pro", icon: "icons/canva.png" },
-  { name: "Grammarly Premium", icon: "icons/grammarly.png" },
-  { name: "Notion Pro", icon: "icons/notion.png" },
-  { name: "GitHub Copilot", icon: "icons/github.png" },
-];
-
+    { name: "Spotify", icon: "icons/spotify.png" },
+    { name: "YouTube Premium", icon: "icons/youtube.png" },
+    { name: "Netflix", icon: "icons/netflix.png" },
+    { name: "Disney+ Hotstar", icon: "icons/disney.png" },
+    { name: "HBO Go", icon: "icons/hbo.png" },
+    { name: "Amazon Prime Video", icon: "icons/amazon.png" },
+    { name: "Canva Pro", icon: "icons/canva.png" },
+    { name: "Grammarly Premium", icon: "icons/grammarly.png" },
+    { name: "Notion Pro", icon: "icons/notion.png" },
+    { name: "GitHub Copilot", icon: "icons/github.png" }
+  ];
 
   const durations = [
     { label: "1 Bulan", value: "1 Bulan", stars: 500 },
@@ -1027,8 +1025,10 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
       </select>
       <button class="buy-button">Order Sekarang</button>
     `;
+
     const button = card.querySelector(".buy-button");
     const select = card.querySelector(".duration-select");
+
     button.onclick = () => {
       const selected = select.options[select.selectedIndex];
       const duration = selected.value;
@@ -1042,9 +1042,11 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
       const encoded = encodeURIComponent(message);
       window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
     };
+
     appGrid.appendChild(card);
   });
 </script>
+
 
    
 
