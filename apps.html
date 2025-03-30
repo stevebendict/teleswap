@@ -81,16 +81,24 @@
     }
 
     /* Title */
-     .main-page-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin: 4.5rem 0 2.5rem;
-      letter-spacing: -0.01em;
-      text-shadow: 0 0 6px rgba(56, 189, 248, 0.15);
-      min-height: 2.5rem; /* Prevent shifting during animation */
-    }
+    .main-page-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 4.5rem 0 2.5rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.15);
+  min-height: 2.5rem;
+}
+
+@media (max-width: 600px) {
+  .main-page-title {
+    font-size: 1.5rem;
+    margin: 3.5rem 0 1.8rem;
+  }
+}
+
     .main-page-title::after {
       content: "|";
       animation: blink 1s infinite;
