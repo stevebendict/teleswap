@@ -111,15 +111,15 @@
     }
 
     /* Grid */
- .app-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 0 1rem;
+ ..app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
   max-width: 1200px;
   margin: 2rem auto;
+  padding: 0 1rem;
 }
+
 
 .app-card {
   width: 280px;
