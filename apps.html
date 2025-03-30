@@ -103,14 +103,26 @@
     }
 
     /* Grid */
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 0 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  .app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .app-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .app-card img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
 
    .app-card {
   background-color: #1e2536;
