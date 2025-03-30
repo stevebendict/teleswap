@@ -300,11 +300,12 @@
         const card = document.createElement("div");
         card.className = "app-card";
 
-        const optionsHTML = durations.map(d => `
-          <option value="${d.value}" data-stars="${d.stars}">
-            ${d.label} - ${d.stars}⭐
-          </option>
-        `).join('');
+        const optionsHTML = app.prices.map(p => `
+  <option value="${p.value}" data-stars="${p.stars}">
+    ${p.label} - ${p.stars}⭐
+  </option>
+`).join('');
+
 
         card.innerHTML = `
           <img src="${app.icon}" alt="${app.name} Logo">
