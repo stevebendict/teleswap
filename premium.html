@@ -897,13 +897,41 @@ function setPremiumMode(mode) {
 function selectPremium(months) {
   selectedDuration = months;
   document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
-  const option = document.querySelectorAll(".package-option")[{3:0,6:1,12:2}[months]];
-  option?.classList.add("selected");
+  const selected = document.querySelector(`.package-option[data-months='${months}']`);
+  selected?.classList.add("selected");
 
   const username = usernameInput.value.trim();
   orderButton.textContent = `Beli Premium - ${months} Bulan`;
   updatePreview(username);
   updateLink(username, months);
+}
+function renderPackageOptions() {
+  const container = document.getElementById("packageOptionsContainer");
+  container.innerHTML = "";
+
+  const priceMap = premiumPackages[premiumMode];
+
+  for (const months in priceMap) {
+    const price = priceMap[months];
+    const label = months == 1 ? "1 Bulan" : months == 3 ? "3 Bulan" : months == 6 ? "6 Bulan" : "1 Tahun";
+
+    const badge = (months == 6 && premiumMode === 'gift') ? `<span class="badge">-30%</span>` :
+                  (months == 12 && premiumMode === 'gift') ? `<span class="badge badge-best">🔥 Best Deal</span>` : "";
+
+    container.innerHTML += `
+      <div class="package-option" onclick="selectPremium(${months})" data-months="${months}">
+        <div class="option-left">
+          <strong>${label}</strong>
+          ${badge}
+        </div>
+        <div class="option-right">Rp${price.toLocaleString('id-ID')}</div>
+      </div>
+    `;
+  }
+
+  // Reset selection after mode change
+  selectedDuration = null;
+  updateLink(usernameInput.value.trim(), null);
 }
 
 function updatePreview(username) {
