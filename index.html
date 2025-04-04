@@ -767,6 +767,15 @@
 <p style="margin-bottom: 0.5rem; font-size: 0.9rem;">Atau pilih paket</p>
 <div id="packageList"></div>
 <div class="toggle-packages" id="toggleBtn" onclick="togglePackageView()">Tampilkan lebih banyak paket ⬇️</div>
+<div style="text-align: center; margin-top: 1.2rem;">
+  <label style="margin-bottom: 0.4rem; display: block;">Pilih Metode Pembayaran:</label>
+  <div id="paymentButtons" style="display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
+    <button class="nav-pill active" onclick="setPaymentMethod('QRIS')" id="payQRIS">QRIS</button>
+    <button class="nav-pill" onclick="setPaymentMethod('USDT')" id="payUSDT">USDT</button>
+    <button class="nav-pill" onclick="setPaymentMethod('TON')" id="payTON">TON</button>
+  </div>
+</div>
+
 <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
 <!-- ✅ START OF POPUP INSERT -->
 <!-- 🆕 MODERN POPUP MODAL -->
