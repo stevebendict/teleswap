@@ -958,7 +958,30 @@ function formatThousands(num) {
       }
     }
 
-    starQtyInput.addEventListener('input', () => {
+   let buyMode = 'stars'; // 'stars' or 'gift'
+let paymentMethod = 'QRIS'; // default
+
+function setBuyMode(mode) {
+  buyMode = mode;
+
+  // toggle active button
+  document.getElementById('buyStarsBtn').classList.toggle('active', mode === 'stars');
+  document.getElementById('buyGiftBtn').classList.toggle('active', mode === 'gift');
+
+  updateOrderLink(); // Update link with new mode
+}
+
+function setPaymentMethod(method) {
+  paymentMethod = method;
+
+  ['QRIS', 'USDT', 'TON'].forEach((m) => {
+    document.getElementById('pay' + m).classList.toggle('active', method === m);
+  });
+
+  updateOrderLink();
+}
+
+   starQtyInput.addEventListener('input', () => {
   let raw = starQtyInput.value.replace(/\D/g, ""); // Remove non-digits
   if (raw.length > 0) {
     starQtyInput.value = formatThousands(raw);
