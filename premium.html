@@ -994,7 +994,8 @@ orderButton.addEventListener("click", e => {
     return;
   }
 
-  const total = priceMap[selectedDuration];
+  const total = premiumPackages[premiumMode][selectedDuration];
+
   popupMessage.innerHTML = `
     <div><strong>👤 Username:</strong> <span>${username}</span></div>
     <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
