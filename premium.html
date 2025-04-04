@@ -949,11 +949,12 @@ function updateLink(username, duration) {
   const total = premiumPackages[premiumMode][duration];
 
 const message = [
-  "🚀 Order Telegram Premium",
+  `🚀 Order Telegram Premium (${premiumMode === 'gift' ? 'via Gift' : 'via Log In'})`,
   `👤 Username: ${username}`,
   `🕐 Durasi: ${duration} Bulan`,
   `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
-].join('\n'); // ← Real newlines!
+].join('\n');
+
 
 const encoded = encodeURIComponent(message);
 
