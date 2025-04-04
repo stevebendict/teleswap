@@ -964,7 +964,8 @@ const encoded = encodeURIComponent(message);
     document.getElementById("confirmSound").play();
     showToast();
     setTimeout(() => {
-      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+      window.open(`https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`, "_blank");
+
     }, 1000);
     setTimeout(() => popupOverlay.classList.remove("show"), 3500);
   };
