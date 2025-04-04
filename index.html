@@ -943,20 +943,24 @@ function formatThousands(num) {
     }
 
     function updateOrderLink() {
-      const username = usernameInput.value.trim();
-      const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
-      if (!username || isNaN(qty) || qty <= 0) return;
-      const total = qty * starPrice;
-      const message = `🚀 Order Telegram Stars
-👤 Username: ${username}
-⭐ Jumlah: ${qty}
-💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
-      const encoded = encodeURIComponent(message);
-      const orderBtn = document.getElementById("orderButton");
-      if (orderBtn) {
-        orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
-      }
-    }
+  const username = usernameInput.value.trim();
+  const qty = parseInt(starQtyInput.value.replace(/\D/g, ''));
+  if (!username || isNaN(qty) || qty <= 0) return;
+  const total = qty * starPrice;
+
+  let message = `🚀 Order Telegram ${buyMode === 'gift' ? 'Gift (via Stars)' : 'Stars'}\n`;
+  message += `👤 Username: ${username}\n`;
+  message += `⭐ Jumlah: ${qty}\n`;
+  message += `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}\n`;
+  message += `💳 Pembayaran via: ${paymentMethod}`;
+
+  const encoded = encodeURIComponent(message);
+  const orderBtn = document.getElementById("orderButton");
+  if (orderBtn) {
+    orderBtn.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+  }
+}
+
 
    let buyMode = 'stars'; // 'stars' or 'gift'
 let paymentMethod = 'QRIS'; // default
