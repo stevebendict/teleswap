@@ -888,6 +888,12 @@ const confirmButton = document.getElementById("confirmButton");
 const popupOverlay = document.getElementById("popupOverlay");
 const popupMessage = document.getElementById("popupMessage");
 
+function setPremiumMode(mode) {
+  premiumMode = mode;
+  document.getElementById('giftModeBtn').classList.toggle('active', mode === 'gift');
+  document.getElementById('loginModeBtn').classList.toggle('active', mode === 'login');
+  renderPackageOptions();
+}
 function selectPremium(months) {
   selectedDuration = months;
   document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
