@@ -865,11 +865,21 @@ document.addEventListener("DOMContentLoaded", function () {
   typeChar();
 });
 
-const priceMap = {
-  3: 200000,
-  6: 280000,
-  12: 500000,
+let premiumMode = 'gift';
+
+const premiumPackages = {
+  gift: {
+    3: 205000,
+    6: 300000,
+    12: 500000,
+  },
+  login: {
+    1: 58000,
+    12: 460000,
+  },
 };
+
+
 let selectedDuration = null;
 
 const usernameInput = document.getElementById("username");
