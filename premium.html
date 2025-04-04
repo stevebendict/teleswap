@@ -1023,10 +1023,12 @@ orderButton.addEventListener("click", e => {
 
   const total = premiumPackages[premiumMode][selectedDuration]; // ✅ THIS FIX
   popupMessage.innerHTML = `
-    <div><strong>👤 Username:</strong> <span>${username}</span></div>
-    <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
-    <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
-  `;
+  <div><strong>👤 Username:</strong> <span>${username}</span></div>
+  <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
+  <div><strong>💳 Pembayaran:</strong> <span>${selectedPaymentMethod}</span></div>
+  <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
+`;
+
   popupOverlay.classList.add("show");
 });
 
