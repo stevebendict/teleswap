@@ -773,7 +773,11 @@
   <label style="margin-bottom: 0.4rem; display: block;">Pilih Metode Pembayaran:</label>
   <div id="paymentButtons" style="display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
     <button class="nav-pill active" onclick="setPaymentMethod('QRIS')" id="payQRIS">QRIS</button>
-    <button class="nav-pill" onclick="setPaymentMethod('USDT')" id="payUSDT">USDT</button>
+    <button class="nav-pill" onclick="setPaymentMethod('USDT')" id="payUSDT">
+  <img src="icons/usdt.png" alt="USDT" style="height: 16px; vertical-align: middle; margin-right: 6px;">
+  USDT
+</button>
+
     <button class="nav-pill" onclick="setPaymentMethod('TON')" id="payTON">TON</button>
   </div>
 </div>
