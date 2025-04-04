@@ -888,10 +888,10 @@ function setPremiumMode(mode) {
    function setPaymentMethod(method) {
   selectedPaymentMethod = method;
 
-  document.querySelectorAll("#paymentMethodSelector button").forEach(btn => {
-    btn.classList.remove("active");
-    if (btn.textContent === method) btn.classList.add("active");
-  });
+  ['QRIS', 'USDT', 'TON'].forEach((m) => {
+  document.getElementById('pay' + m).classList.toggle('active', method === m);
+});
+
 
   const username = usernameInput.value.trim();
   updatePreview(username);
