@@ -803,6 +803,12 @@
 <label for="premiumDuration">Pilih Durasi Langganan</label>
 
 <div id="packageOptionsContainer"></div>
+<label for="paymentMethod" style="margin-top: 1.5rem; display: block;">Pilih Metode Pembayaran</label>
+<div id="paymentMethodSelector" style="display: flex; justify-content: center; gap: 0.6rem; margin: 0.8rem 0 1.2rem;">
+  <button class="nav-pill active" onclick="setPaymentMethod('QRIS')">QRIS</button>
+  <button class="nav-pill" onclick="setPaymentMethod('USDT')">USDT</button>
+  <button class="nav-pill" onclick="setPaymentMethod('TON')">TON</button>
+</div>
 
 
 </div>
