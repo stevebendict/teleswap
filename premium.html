@@ -989,13 +989,13 @@ orderButton.addEventListener("click", e => {
     usernameInput.focus();
     return;
   }
+
   if (!selectedDuration) {
     alert("⚠️ Silakan pilih durasi langganan.");
     return;
   }
 
-  const total = premiumPackages[premiumMode][selectedDuration];
-
+  const total = premiumPackages[premiumMode][selectedDuration]; // ✅ THIS FIX
   popupMessage.innerHTML = `
     <div><strong>👤 Username:</strong> <span>${username}</span></div>
     <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
@@ -1003,6 +1003,7 @@ orderButton.addEventListener("click", e => {
   `;
   popupOverlay.classList.add("show");
 });
+
 
 function showToast(message = "✅ Pesanan dikirim ke admin!") {
   const toast = document.getElementById("toast");
