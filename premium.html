@@ -792,9 +792,18 @@
 <div id="packageOptionsContainer"></div>
 <label for="paymentMethod" style="margin-top: 1.5rem; display: block;">Pilih Metode Pembayaran</label>
 <div id="paymentMethodSelector" style="display: flex; justify-content: center; gap: 0.6rem; margin: 0.8rem 0 1.2rem;">
-<button class="nav-pill active" onclick="setPaymentMethod('QRIS')">QRIS</button>
-<button class="nav-pill" onclick="setPaymentMethod('USDT')">USDT</button>
-<button class="nav-pill" onclick="setPaymentMethod('TON')">TON</button>
+<button class="nav-pill active" id="payQRIS" onclick="setPaymentMethod('QRIS')">
+<img alt="QRIS" src="icons/qris.png" style="height: 16px; vertical-align: middle; margin-right: 6px;"/>
+  QRIS
+</button>
+<button class="nav-pill" id="payUSDT" onclick="setPaymentMethod('USDT')">
+<img alt="USDT" src="icons/usdt.png" style="height: 16px; vertical-align: middle; margin-right: 6px;"/>
+  USDT
+</button>
+<button class="nav-pill" id="payTON" onclick="setPaymentMethod('TON')">
+<img alt="TON" src="icons/ton.png" style="height: 16px; vertical-align: middle; margin-right: 6px;"/>
+  TON
+</button>
 </div>
 <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a><div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
 <div class="popup-card" onclick="event.stopPropagation();">
@@ -808,10 +817,8 @@
 </div>
 </div>
 </div><audio id="confirmSound" preload="auto" src="https://cdn.pixabay.com/audio/2022/03/15/audio_49f3a4a2f3.mp3"></audio></div>
-
 <!-- ✅ START OF POPUP INSERT -->
 <!-- 🆕 MODERN POPUP MODAL -->
-
 <!-- ✅ END OF POPUP INSERT -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
@@ -962,14 +969,22 @@ const encoded = encodeURIComponent(message);
 
   orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
 
-  confirmButton.onclick = () => {
-    document.getElementById("confirmSound").play();
-    showToast();
-    setTimeout(() => {
-     window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+  
+confirmButton.onclick = () => {
+  const encoded = encodeURIComponent(message);
+  document.getElementById("confirmSound").play();
+
+  showToast("✅ Pesanan dikirim ke admin!");
+
+  setTimeout(() => {
+    window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
   }, 1000);
-    setTimeout(() => popupOverlay.classList.remove("show"), 3500);
-  };
+
+  setTimeout(() => {
+    popupOverlay.classList.remove("show");
+  }, 3500);
+};
+
 }
 
 usernameInput.addEventListener("input", () => {
@@ -1047,8 +1062,6 @@ function closePopup() {
 ">
   ✅ Pesanan dikirim ke admin!
 </div>
-
-
 <!-- 🌐 Info Island Grid Section -->
 <div class="info-section">
 <h2 class="info-section-title">Kenali TokoAkses Lebih Dekat</h2>
