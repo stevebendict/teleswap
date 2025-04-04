@@ -1071,7 +1071,14 @@ function showPopup() {
   <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
 `;
 
-  document.getElementById('popupOverlay').classList.add('show');
+  const giftReminder = document.getElementById("giftReminder");
+if (buyMode === 'gift') {
+  giftReminder.style.display = "block";
+} else {
+  giftReminder.style.display = "none";
+}
+
+   document.getElementById('popupOverlay').classList.add('show');
 
 
 confirmButton.onclick = () => {
