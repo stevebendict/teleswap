@@ -902,6 +902,20 @@ function setPremiumMode(mode) {
   updateLink(usernameInput.value.trim(), selectedDuration); // ✅ this line
 }
 
+   function setPaymentMethod(method) {
+  selectedPaymentMethod = method;
+
+  document.querySelectorAll("#paymentMethodSelector button").forEach(btn => {
+    btn.classList.remove("active");
+    if (btn.textContent === method) btn.classList.add("active");
+  });
+
+  const username = usernameInput.value.trim();
+  updatePreview(username);
+  updateLink(username, selectedDuration);
+}
+
+
 function selectPremium(months) {
   selectedDuration = months;
   document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
