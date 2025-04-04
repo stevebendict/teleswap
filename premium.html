@@ -793,29 +793,18 @@
 </div>
 <div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
 <div class="username-preview" id="previewLink"></div>
+
+<div style="margin-bottom: 1.5rem; text-align: center;">
+  <button id="giftModeBtn" class="nav-pill active" onclick="setPremiumMode('gift')">🎁 Via Gift</button>
+  <button id="loginModeBtn" class="nav-pill" onclick="setPremiumMode('login')">🔐 Via Log In</button>
+</div>
+
+   
 <label for="premiumDuration">Pilih Durasi Langganan</label>
 
-<div class="package-option" onclick="selectPremium(3)">
-  <div class="option-left"><strong>3 Bulan</strong></div>
-  <div class="star-summary">Rp200.000</div>
-</div>
-
-<div class="package-option" onclick="selectPremium(6)">
-  <div class="option-left">
-    <strong>6 Bulan</strong>
-    <span class="badge">-30%</span>
-  </div>
-  <div class="option-right">Rp280.000</div>
-</div>
+<div id="packageOptionsContainer"></div>
 
 
-
-<div class="package-option" onclick="selectPremium(12)">
-  <div class="option-left">
-    <strong>1 Tahun</strong>
-    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
-
-  </div>
   <div class="option-right">Rp500.000</div>
 </div>
 
