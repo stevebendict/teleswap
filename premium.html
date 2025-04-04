@@ -946,7 +946,8 @@ function updatePreview(username) {
 
 function updateLink(username, duration) {
   if (!username || !duration) return;
-  const total = priceMap[duration];
+  const total = premiumPackages[premiumMode][duration];
+
 const message = [
   "🚀 Order Telegram Premium",
   `👤 Username: ${username}`,
