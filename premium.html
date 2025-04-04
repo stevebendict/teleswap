@@ -974,8 +974,10 @@ const message = [
   `🚀 Order Telegram Premium (${premiumMode === 'gift' ? 'via Gift' : 'via Log In'})`,
   `👤 Username: ${username}`,
   `🕐 Durasi: ${duration} Bulan`,
+  `💳 Metode Pembayaran: ${selectedPaymentMethod}`,
   `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
 ].join('\n');
+
 
 
 const encoded = encodeURIComponent(message);
